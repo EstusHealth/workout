@@ -3,32 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>LIFT</title>
-<meta name="description" content="LIFT — Workout generator and tracker. Build a session based on your time, equipment, and energy.">
-<meta name="theme-color" content="#0a0a0a">
+<title>Estus Health Performance Lab</title>
+<meta name="description" content="Estus Health Performance Lab — Workout generator and tracker. Build a session based on your time, equipment, and energy.">
+<meta name="theme-color" content="#0c0a08">
 <script>
   // Apply saved theme before first paint to prevent flash
-  (function(){var t=localStorage.getItem('lift-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+  (function(){var t=localStorage.getItem('estus-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
 </script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚗️</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0a;
-    --border: #222;
-    --accent: #e8f54e;
-    --accent2: #ff6b35;
+    --bg: #0c0a08;
+    --border: #2a2420;
+    --accent: #C8A97E;
+    --accent2: #A0522D;
     --text: #f0ede8;
-    --muted: #555;
-    --card: #161616;
-    --green: #4ade80;
-    --modal-bg: #141414;
-    --modal-border: #333;
+    --muted: #8C7A6B;
+    --card: #18140f;
+    --green: #5A8C5A;
+    --modal-bg: #16120e;
+    --modal-border: #3a3028;
     --overlay: rgba(0,0,0,.85);
-    --accent-glow: rgba(232,245,78,.15);
-    --accent-tint: rgba(232,245,78,.08);
-    --chip-selected-text: #0a0a0a;
-    --btn-text: #0a0a0a;
+    --accent-glow: rgba(200,169,126,.18);
+    --accent-tint: rgba(200,169,126,.08);
+    --chip-selected-text: #0c0a08;
+    --btn-text: #0c0a08;
   }
   [data-theme="light"] {
     --bg: #F0E8DC;
@@ -55,7 +55,8 @@
   @keyframes spinIn { from{opacity:0;transform:scale(.92)} to{opacity:1;transform:scale(1)} }
   @keyframes checkPop { 0%{transform:scale(1)} 40%{transform:scale(1.3)} 100%{transform:scale(1)} }
   .topbar { display:flex; justify-content:space-between; align-items:center; padding:20px 24px 0; }
-  .logo { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:.1em; color:var(--accent); }
+  .logo { font-family:'Bebas Neue',sans-serif; font-size:1.35rem; letter-spacing:.1em; color:var(--accent); line-height:1; }
+  .logo .logo-sub { font-family:'DM Sans',sans-serif; font-size:.55rem; letter-spacing:.18em; color:var(--muted); text-transform:uppercase; font-weight:500; display:block; margin-top:1px; }
   .step-label { font-size:.72rem; color:var(--muted); letter-spacing:.12em; text-transform:uppercase; }
   .back-btn { background:none; border:none; color:var(--muted); font-family:'DM Sans',sans-serif; font-size:.85rem; cursor:pointer; padding:0; display:flex; align-items:center; gap:4px; }
   .back-btn:active { opacity:.6; }
@@ -209,7 +210,7 @@
       color:#111 !important; padding:32px !important;
       font-family:'DM Sans',sans-serif !important;
     }
-    .print-logo { font-size:2.5rem; font-weight:900; letter-spacing:.1em; color:#000; margin-bottom:4px; }
+    .print-logo { font-size:1.8rem; font-weight:900; letter-spacing:.1em; color:#78563B; margin-bottom:4px; }
     .print-date { font-size:.75rem; color:#888; margin-bottom:20px; }
     .print-meta { display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
     .print-meta-tag { font-size:.72rem; border:1px solid #ddd; padding:4px 10px; border-radius:100px; color:#444; }
@@ -218,7 +219,7 @@
     .print-ex-detail { font-size:.78rem; color:#777; }
     .print-sets-row { display:flex; gap:6px; margin-top:8px; flex-wrap:wrap; }
     .print-set-box { width:36px; height:36px; border:1.5px solid #ddd; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:.7rem; color:#aaa; }
-    .print-set-box.done { background:#4ade80; border-color:#4ade80; color:#000; font-size:.9rem; }
+    .print-set-box.done { background:#5A8C5A; border-color:#5A8C5A; color:#fff; font-size:.9rem; }
     .print-section-title { font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; color:#aaa; margin:20px 0 8px; }
     .print-note { background:#f8f8f8; border-radius:10px; padding:12px 14px; font-size:.85rem; color:#444; line-height:1.5; white-space:pre-wrap; }
     .print-stats { display:flex; gap:12px; margin-top:20px; }
@@ -243,7 +244,7 @@
 </div>
 <!-- ====== SCREEN 1 ====== -->
 <div class="screen active" id="screen-sets">
-  <div class="topbar"><div class="logo">LIFT</div><div style="display:flex;align-items:center;gap:12px;"><button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode"></button><div class="step-label">Step 1 of 4</div></div></div>
+  <div class="topbar"><div class="logo">ESTUS HEALTH<span class="logo-sub">Performance Lab</span></div><div style="display:flex;align-items:center;gap:12px;"><button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode"></button><div class="step-label">Step 1 of 4</div></div></div>
   <div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div>
   <div class="section-head"><h2>HOW MUCH TIME DO YOU HAVE?</h2><p>We'll dial the volume to match your window.</p></div>
   <div class="slider-section">
@@ -299,7 +300,7 @@
 </div>
 <!-- ====== SCREEN 4: PLAN ====== -->
 <div class="screen" id="screen-workout">
-  <div class="topbar"><button class="back-btn" onclick="goTo('screen-feel')">&#8592; Adjust</button><div class="logo">LIFT</div></div>
+  <div class="topbar"><button class="back-btn" onclick="goTo('screen-feel')">&#8592; Adjust</button><div class="logo">ESTUS HEALTH<span class="logo-sub">Performance Lab</span></div></div>
   <div class="section-head"><h2 id="workout-title">TODAY'S WORKOUT</h2><p id="workout-subtitle"></p></div>
   <div class="workout-meta" id="workout-meta"></div>
   <div id="feel-banner-wrap"></div>
@@ -317,7 +318,7 @@
 </div>
 <!-- ====== SCREEN 5: ACTIVE ====== -->
 <div class="screen" id="screen-active">
-  <div class="topbar"><button class="back-btn" onclick="goTo('screen-workout')">&#8592; Plan</button><div class="logo">LIFT</div></div>
+  <div class="topbar"><button class="back-btn" onclick="goTo('screen-workout')">&#8592; Plan</button><div class="logo">ESTUS HEALTH<span class="logo-sub">Performance Lab</span></div></div>
   <div class="active-header"><h2 id="active-title">IN SESSION</h2></div>
   <div class="overall-progress">
     <div class="op-row">
@@ -365,16 +366,16 @@ function applyTheme(theme){
   document.documentElement.setAttribute('data-theme',theme);
   document.getElementById('theme-toggle').textContent=theme==='light'?'\u263E':'\u2600';
   var meta=document.querySelector('meta[name="theme-color"]');
-  if(meta) meta.setAttribute('content',theme==='light'?'#F0E8DC':'#0a0a0a');
+  if(meta) meta.setAttribute('content',theme==='light'?'#F0E8DC':'#0c0a08');
 }
 function toggleTheme(){
   var current=document.documentElement.getAttribute('data-theme')||'dark';
   var next=current==='dark'?'light':'dark';
-  localStorage.setItem('lift-theme',next);
+  localStorage.setItem('estus-theme',next);
   applyTheme(next);
 }
 (function(){
-  var saved=localStorage.getItem('lift-theme')||'dark';
+  var saved=localStorage.getItem('estus-theme')||'dark';
   applyTheme(saved);
 })();
 // ============================================================
@@ -684,7 +685,7 @@ function buildPrintHTML(){
   if(note){
     noteHTML='<div class="print-section-title">Notes</div><div class="print-note">'+note.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</div>';
   }
-  return '<div class="print-logo">LIFT</div>'+
+  return '<div class="print-logo">ESTUS HEALTH<div style="font-size:8px;letter-spacing:.18em;color:#8C7A6B;text-transform:uppercase;margin-top:1px;">Performance Lab</div></div>'+
     '<div class="print-date">'+dateStr+'</div>'+
     '<div class="print-meta">'+
       '<div class="print-meta-tag">'+parts.map(p=>p.charAt(0).toUpperCase()+p.slice(1)).join(', ')+'</div>'+
@@ -727,58 +728,59 @@ function renderCanvasExport(){
   var note=gatherNotes();
   var dateStr=new Date().toLocaleDateString('en-AU',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   var card=document.createElement('div');
-  card.style.cssText='position:fixed;left:-9999px;top:0;width:390px;background:#0a0a0a;color:#f0ede8;font-family:Arial,sans-serif;padding:32px;';
+  card.style.cssText='position:fixed;left:-9999px;top:0;width:390px;background:#0c0a08;color:#f0ede8;font-family:Arial,sans-serif;padding:32px;';
   var exRows=state.workout.map(ex=>{
     var boxes=Array.from({length:ex.sets},(_,s)=>{
       var isDone=s<(ex.completedSets||0);
-      return '<div style="width:36px;height:36px;border-radius:8px;border:1.5px solid '+(isDone?'#4ade80':'#333')+';background:'+(isDone?'#4ade80':'transparent')+';display:inline-flex;align-items:center;justify-content:center;font-size:'+(isDone?'14px':'10px')+';color:'+(isDone?'#000':'#555')+';margin:2px;">'+(isDone?'\u2713':'S'+(s+1))+'</div>';
+      return '<div style="width:36px;height:36px;border-radius:8px;border:1.5px solid '+(isDone?'#5A8C5A':'#3a3028')+';background:'+(isDone?'#5A8C5A':'transparent')+';display:inline-flex;align-items:center;justify-content:center;font-size:'+(isDone?'14px':'10px')+';color:'+(isDone?'#000':'#8C7A6B')+';margin:2px;">'+(isDone?'\u2713':'S'+(s+1))+'</div>';
     }).join('');
-    return '<div style="background:#161616;border:1px solid #222;border-radius:12px;padding:14px 16px;margin-bottom:8px;">'+
+    return '<div style="background:#18140f;border:1px solid #2a2420;border-radius:12px;padding:14px 16px;margin-bottom:8px;">'+
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">'+
         '<div style="font-size:15px;font-weight:600;">'+ex.name+'</div>'+
-        '<div style="font-size:10px;background:#e8f54e;color:#000;padding:3px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:.06em;">'+typeLabels[ex.eqType]+'</div>'+
+        '<div style="font-size:10px;background:#C8A97E;color:#0c0a08;padding:3px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:.06em;">'+typeLabels[ex.eqType]+'</div>'+
       '</div>'+
-      '<div style="font-size:12px;color:#555;margin-bottom:8px;">'+ex.sets+' sets \u00d7 '+ex.reps+' \u00b7 rest '+ex.rest+' \u00b7 '+ex.bodypart+'</div>'+
+      '<div style="font-size:12px;color:#8C7A6B;margin-bottom:8px;">'+ex.sets+' sets \u00d7 '+ex.reps+' \u00b7 rest '+ex.rest+' \u00b7 '+ex.bodypart+'</div>'+
       '<div style="display:flex;flex-wrap:wrap;gap:4px;">'+boxes+'</div>'+
     '</div>';
   }).join('');
   var noteBlock='';
   if(note){
-    noteBlock='<div style="margin-top:16px;background:#161616;border:1px solid #222;border-radius:12px;padding:14px 16px;">'+
-      '<div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#555;margin-bottom:6px;">Notes</div>'+
+    noteBlock='<div style="margin-top:16px;background:#18140f;border:1px solid #2a2420;border-radius:12px;padding:14px 16px;">'+
+      '<div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#8C7A6B;margin-bottom:6px;">Notes</div>'+
       '<div style="font-size:13px;color:#aaa;line-height:1.5;">'+note.replace(/\n/g,'<br>')+'</div>'+
     '</div>';
   }
   card.innerHTML=
     '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;">'+
       '<div>'+
-        '<div style="font-size:28px;font-weight:900;letter-spacing:.1em;color:#e8f54e;margin-bottom:2px;">LIFT</div>'+
-        '<div style="font-size:11px;color:#555;">'+dateStr+'</div>'+
+        '<div style="font-size:22px;font-weight:900;letter-spacing:.1em;color:#C8A97E;margin-bottom:0;">ESTUS HEALTH</div>'+
+        '<div style="font-size:9px;letter-spacing:.18em;color:#8C7A6B;text-transform:uppercase;">Performance Lab</div>'+
+        '<div style="font-size:11px;color:#8C7A6B;margin-top:4px;">'+dateStr+'</div>'+
       '</div>'+
       '<div style="text-align:right;">'+
         '<div style="font-size:12px;color:#888;">'+parts.map(p=>p.charAt(0).toUpperCase()+p.slice(1)).join(' + ')+'</div>'+
-        '<div style="font-size:11px;color:#555;margin-top:2px;">'+intensity.label+' \u00b7 '+intensity.reps+'</div>'+
+        '<div style="font-size:11px;color:#8C7A6B;margin-top:2px;">'+intensity.label+' \u00b7 '+intensity.reps+'</div>'+
       '</div>'+
     '</div>'+
     exRows+
     noteBlock+
     '<div style="display:flex;gap:10px;margin-top:16px;">'+
-      '<div style="flex:1;background:#161616;border:1px solid #222;border-radius:12px;padding:14px;text-align:center;">'+
-        '<div style="font-size:26px;font-weight:700;color:#e8f54e;">'+done+'/'+totalPossible+'</div>'+
-        '<div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Sets</div>'+
+      '<div style="flex:1;background:#18140f;border:1px solid #2a2420;border-radius:12px;padding:14px;text-align:center;">'+
+        '<div style="font-size:26px;font-weight:700;color:#C8A97E;">'+done+'/'+totalPossible+'</div>'+
+        '<div style="font-size:10px;color:#8C7A6B;text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Sets</div>'+
       '</div>'+
-      '<div style="flex:1;background:#161616;border:1px solid #222;border-radius:12px;padding:14px;text-align:center;">'+
-        '<div style="font-size:26px;font-weight:700;color:#e8f54e;">'+exDone+'</div>'+
-        '<div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Exercises</div>'+
+      '<div style="flex:1;background:#18140f;border:1px solid #2a2420;border-radius:12px;padding:14px;text-align:center;">'+
+        '<div style="font-size:26px;font-weight:700;color:#C8A97E;">'+exDone+'</div>'+
+        '<div style="font-size:10px;color:#8C7A6B;text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Exercises</div>'+
       '</div>'+
-      '<div style="flex:1;background:#161616;border:1px solid #222;border-radius:12px;padding:14px;text-align:center;">'+
-        '<div style="font-size:26px;font-weight:700;color:#e8f54e;">'+(state.elapsedMinutes||'\u2014')+'m</div>'+
-        '<div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Duration</div>'+
+      '<div style="flex:1;background:#18140f;border:1px solid #2a2420;border-radius:12px;padding:14px;text-align:center;">'+
+        '<div style="font-size:26px;font-weight:700;color:#C8A97E;">'+(state.elapsedMinutes||'\u2014')+'m</div>'+
+        '<div style="font-size:10px;color:#8C7A6B;text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Duration</div>'+
       '</div>'+
     '</div>';
   document.body.appendChild(card);
   html2canvas(card,{
-    backgroundColor:'#0a0a0a',
+    backgroundColor:'#0c0a08',
     scale:2,
     useCORS:true,
     logging:false,
@@ -786,7 +788,7 @@ function renderCanvasExport(){
     document.body.removeChild(card);
     var link=document.createElement('a');
     var dateSlug=new Date().toISOString().slice(0,10);
-    link.download='lift-session-'+dateSlug+'.jpg';
+    link.download='estus-session-'+dateSlug+'.jpg';
     link.href=canvas.toDataURL('image/jpeg',0.92);
     link.click();
   }).catch(()=>{ document.body.removeChild(card); alert('Export failed \u2014 try the PDF option instead.'); });

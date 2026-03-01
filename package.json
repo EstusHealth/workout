@@ -1,8 +1,8 @@
 {
-  "name": "lift-workout",
+  "name": "estus-health-performance-lab",
   "version": "1.0.0",
   "private": true,
-  "description": "LIFT — Workout generator and tracker",
+  "description": "Estus Health Performance Lab — Workout generator and tracker",
   "scripts": {
     "dev": "npx serve public",
     "build": "echo 'Static site — no build step required'"
